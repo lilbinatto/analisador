@@ -1,8 +1,8 @@
 :root{
   /* TradingView dark palette */
-  --bg:#131722;         /* chart background */
-  --panel:#1e222d;      /* panels/cards */
-  --border:#2a2e39;     /* subtle borders */
+  --bg:#000000;         /* chart background */
+  --panel:#0a0a0a;      /* panels/cards */
+  --border:#1a1a1a;     /* subtle borders */
   --muted:#9aa4b2;
   --text:#e6e8eb;
   --accent:#3b82f6;     /* blue accents (subtle) */
@@ -19,12 +19,12 @@ body{
 }
 .container{max-width:1200px;margin:0 auto;padding:16px}
 
-.topbar{position:sticky;top:0;z-index:10;background:rgba(19,23,34,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
-.topbar .container{display:flex;gap:16px;align-items:center}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
+.topbar .container{display:flex;gap:16px;align-items:center;max-width:none;width:100%;margin:0;padding:0}
 .topbar h1{font-size:18px;margin:0;margin-right:auto;color:var(--accent)}
-.quotes{position:relative;overflow:hidden}
-.quotes-track{display:flex;gap:14px;width:max-content;will-change:transform}
-.quote{display:flex;gap:8px;align-items:center;font-size:14px;padding:4px 10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;flex:0 0 auto}
+.quotes{position:relative;overflow:hidden;width:100%}
+.quotes-track{display:flex;gap:0;width:max-content;will-change:transform}
+.quote{display:flex;gap:8px;align-items:center;font-size:15px;padding:8px 20px;background:transparent;border:none;border-radius:0;flex:0 0 auto}
 .quote img{width:16px;height:16px;border-radius:50%}
 .quote .chg.up{color:var(--buy)}
 .quote .chg.down{color:var(--sell)}
@@ -46,9 +46,9 @@ body{
 
 .controls{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
 .field{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
-.price-badge{display:inline-flex;align-items:center;gap:6px;background:#12161f;border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--text);font-weight:600}
+.price-badge{display:inline-flex;align-items:center;gap:6px;background:#0a0a0a;border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--text);font-weight:600}
 label{font-size:12px;color:var(--muted)}
-select,input,button{background:#12161f;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+select,input,button{background:#0a0a0a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
 button{cursor:pointer}
 button:hover{border-color:var(--accent)}
 
@@ -66,4 +66,4 @@ button:hover{border-color:var(--accent)}
 /* Footer Ads */
 .ads{padding:16px 0;border-top:1px solid var(--border);background:var(--bg)}
 .ads .container{display:flex;justify-content:center;align-items:center}
-.ads img{max-width:100%;height:auto;display:block}
+.ads img{max-width:300px;width:100%;height:auto;display:block}
