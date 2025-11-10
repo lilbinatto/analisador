@@ -52,7 +52,6 @@ body{
   position:relative;
   overflow:hidden;
   width:100%;
-  pointer-events:none; /* impede bloqueio de cliques fora do carrossel */
 }
 .quotes-track{
   display:flex;
@@ -145,20 +144,10 @@ button:hover{border-color:var(--accent)}
 .hidden{display:none}
 .loading{opacity:.6}
 
-/* === FOOTER ADS === */
-.ads{
-  padding:16px 0;
-  border-top:1px solid var(--border);
-  background:var(--bg)
-}
-.ads .container{
-  display:flex;
-  justify-content:center;
-  align-items:center
-}
-.ads img{
-  max-width:300px;
-  width:100%;
-  height:auto;
-  display:block
+
+/* Disable any clicks inside the TradingView widget in the topbar */
+.topbar .tradingview-widget-container,
+.topbar .tradingview-widget-container *,
+.topbar .tradingview-widget-container iframe{
+  pointer-events: none !important;
 }
