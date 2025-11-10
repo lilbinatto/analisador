@@ -9,44 +9,84 @@
   --buy:#22c55e;
   --sell:#ef4444;
 }
+
 *{box-sizing:border-box}
 html,body{height:100%}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
   color:var(--text);
   background:var(--bg);
 }
+
 .container{max-width:1200px;margin:0 auto;padding:16px}
 
-.topbar{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
-.topbar .container{display:flex;gap:16px;align-items:center;max-width:none;width:100%;margin:0;padding:0}
-
-/* CORREÇÃO 2.0: Aplica pointer-events ao container do widget e desabilita todos os links injetados */
-.tradingview-widget-container,
-.tradingview-widget-container a {
-  pointer-events: none;
+/* === TOPBAR === */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(0,0,0,.9);
+  backdrop-filter:saturate(120%) blur(6px);
+  border-bottom:1px solid var(--border)
 }
-/* Reativa APENAS o link de copyright explícito para que o usuário possa clicar nele */
-.tradingview-widget-copyright a {
-  pointer-events: all;
+.topbar .container{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  max-width:none;
+  width:100%;
+  margin:0;
+  padding:0
+}
+.topbar h1{
+  font-size:18px;
+  margin:0;
+  margin-right:auto;
+  color:var(--accent)
 }
 
-.topbar h1{font-size:18px;margin:0;margin-right:auto;color:var(--accent)}
-.quotes{position:relative;overflow:hidden;width:100%}
-.quotes-track{display:flex;gap:0;width:max-content;will-change:transform}
-.quote{display:flex;gap:8px;align-items:center;font-size:15px;padding:8px 20px;background:transparent;border:none;border-radius:0;flex:0 0 auto}
-.quote img{width:16px;height:16px;border-radius:50%}
+/* === QUOTES === */
+.quotes{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  pointer-events:none; /* impede bloqueio de cliques fora do carrossel */
+}
+.quotes-track{
+  display:flex;
+  gap:0;
+  width:max-content;
+  will-change:transform;
+  animation: marquee 28s linear infinite;
+  pointer-events:none; /* evita bloquear cliques da página */
+}
+.quote{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-size:15px;
+  padding:8px 20px;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  flex:0 0 auto;
+  pointer-events:auto; /* mantém os quotes clicáveis se desejar */
+}
+.quote img{
+  width:16px;
+  height:16px;
+  border-radius:50%
+}
 .quote .chg.up{color:var(--buy)}
 .quote .chg.down{color:var(--sell)}
 
-/* Mobile marquee */
+/* === MARQUEE ANIMATION === */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-/* Animação sempre ativa (carrossel contínuo) */
-.quotes-track{animation: marquee 28s linear infinite}
 
 /* Pausa ao passar o mouse */
 .quotes:hover .quotes-track{animation-play-state: paused}
@@ -55,26 +95,70 @@ body{
   .quotes-track{animation:none}
 }
 
+/* === CONTROLS === */
 .controls{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
-.field{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
-.price-badge{display:inline-flex;align-items:center;gap:6px;background:#0a0a0a;border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--text);font-weight:600}
+.field{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px 10px
+}
+.price-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#0a0a0a;
+  border:1px solid var(--border);
+  padding:6px 10px;
+  border-radius:999px;
+  color:var(--text);
+  font-weight:600
+}
 label{font-size:12px;color:var(--muted)}
-select,input,button{background:#0a0a0a;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+select,input,button{
+  background:#0a0a0a;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:8px 10px
+}
 button{cursor:pointer}
 button:hover{border-color:var(--accent)}
 
+/* === GRID === */
 .grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
 @media (max-width:1000px){.grid{grid-template-columns:1fr}}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden
+}
 .card h2{font-size:16px;margin:12px 12px 0;color:var(--muted)}
 .chart #tv_chart{height:560px}
 .signal #tv_ta{height:560px}
 
-/* Utility */
+/* === UTILITY === */
 .hidden{display:none}
 .loading{opacity:.6}
 
-/* Footer Ads */
-.ads{padding:16px 0;border-top:1px solid var(--border);background:var(--bg)}
-.ads .container{display:flex;justify-content:center;align-items:center}
-.ads img{max-width:300px;width:100%;height:auto;display:block}
+/* === FOOTER ADS === */
+.ads{
+  padding:16px 0;
+  border-top:1px solid var(--border);
+  background:var(--bg)
+}
+.ads .container{
+  display:flex;
+  justify-content:center;
+  align-items:center
+}
+.ads img{
+  max-width:300px;
+  width:100%;
+  height:auto;
+  display:block
+}
