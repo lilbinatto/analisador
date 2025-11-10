@@ -20,7 +20,21 @@ body{
 .container{max-width:1200px;margin:0 auto;padding:16px}
 
 .topbar{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
-.topbar .container{display:flex;gap:16px;align-items:center;max-width:none;width:100%;margin:0;padding:0}
+.topbar .container{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  max-width:none;
+  width:100%;
+  margin:0;
+  padding:0;
+  /* CORREÇÃO: Desabilita eventos de ponteiro no container para evitar cliques acidentais */
+  pointer-events: none;
+}
+/* CORREÇÃO: Reativa eventos de ponteiro APENAS para o link de copyright dentro do widget do TradingView */
+.tradingview-widget-copyright a {
+  pointer-events: all;
+}
 .topbar h1{font-size:18px;margin:0;margin-right:auto;color:var(--accent)}
 .quotes{position:relative;overflow:hidden;width:100%}
 .quotes-track{display:flex;gap:0;width:max-content;will-change:transform}
